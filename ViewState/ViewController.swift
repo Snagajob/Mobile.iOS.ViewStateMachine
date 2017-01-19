@@ -36,7 +36,7 @@ class ViewController: UIViewController {
                 }else {
                     return .empty
                 }
-            }.asDriver(onErrorJustReturn: .empty).drive(self.state)
+            }.asDriver(onErrorJustReturn: .empty).drive(self.viewState)
             .addDisposableTo(disposeBag)
     }
 
@@ -46,10 +46,10 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ViewStateDriven {
+extension ViewController: ViewStateTransitionable {
     typealias Result = UIColor
     
-    var state: AnyObserver<ViewState<Result>> {
+    var viewState: AnyObserver<ViewState<Result>> {
         return UIBindingObserver(UIElement: self) { viewController, state in
             switch state {
             case .result(let color):

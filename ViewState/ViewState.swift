@@ -18,7 +18,7 @@ enum ViewState<T> {
     case error(Error)
 }
 
-protocol ViewStateDriven {
+protocol ViewStateTransitionable {
     associatedtype Result
-    var state: AnyObserver<ViewState<Result>> { get }
+    var viewState: AnyObserver<ViewState<Result>> { get }
 }
