@@ -1,0 +1,9 @@
+defaults:
+  configuration: Debug
+  platform: iOS
+  xcode-version: 8.2.1
+skips:
+ - [ iOS, RxSwift, RxExample.xcodeproj, RxSwift-iOS ]
+ - [ iOS, RxSwift, RxExample.xcodeproj, RxCocoa-iOS ]
+ - [ iOS, RxSwift, RxExample.xcodeproj, RxTests-iOS ]
+ - [ iOS, RxSwift, RxExample.xcodeproj, RxBlocking-iOS ]
