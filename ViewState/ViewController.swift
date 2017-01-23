@@ -36,7 +36,11 @@ class ViewController: UIViewController {
                 }else {
                     return .empty
                 }
-            }.asDriver(onErrorJustReturn: .empty).drive(self.viewState)
+            }
+            .asDriver(onErrorRecover: { error in
+                return Driver.just(.error(error))
+            })
+            .drive(self.viewState)
             .addDisposableTo(disposeBag)
     }
 
@@ -48,8 +52,8 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewStateTransitionable {
     typealias Result = UIColor
-    
-    var viewState: AnyObserver<ViewState<Result>> {
+    typealias UIElement = ViewController
+    var viewState: UIBindingObserver<UIElement, ViewState<Result>> {
         return UIBindingObserver(UIElement: self) { viewController, state in
             switch state {
             case .result(let color):
@@ -63,7 +67,7 @@ extension ViewController: ViewStateTransitionable {
                 }, completion: nil)
             default: return
             }
-        }.asObserver()
+        }
     }
     
 }

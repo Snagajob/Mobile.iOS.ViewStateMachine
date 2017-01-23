@@ -20,5 +20,6 @@ enum ViewState<T> {
 
 protocol ViewStateTransitionable {
     associatedtype Result
-    var viewState: AnyObserver<ViewState<Result>> { get }
+    associatedtype UIElement: AnyObject
+    var viewState: UIBindingObserver<UIElement, ViewState<Result>> { get }
 }
