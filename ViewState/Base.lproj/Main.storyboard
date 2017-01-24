@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="91a-nE-nKq">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="91a-nE-nKq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,6 +37,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzT-cB-fzu">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ale-BV-da6">
+                                        <rect key="frame" x="0.0" y="322.5" width="375" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ale-BV-da6" firstAttribute="width" secondItem="mzT-cB-fzu" secondAttribute="width" id="6bc-0f-UJP"/>
+                                    <constraint firstItem="ale-BV-da6" firstAttribute="centerX" secondItem="mzT-cB-fzu" secondAttribute="centerX" id="BQv-4k-rk4"/>
+                                    <constraint firstItem="ale-BV-da6" firstAttribute="centerY" secondItem="mzT-cB-fzu" secondAttribute="centerY" id="Rwt-Xb-xnF"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PP3-vf-nuJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -66,7 +83,11 @@
                             <constraint firstItem="PP3-vf-nuJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Rg2-V4-j5O"/>
                             <constraint firstItem="6Ie-QZ-j7j" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Y3b-6Z-lTS"/>
                             <constraint firstItem="6Ie-QZ-j7j" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Z5U-p7-DMT"/>
+                            <constraint firstItem="mzT-cB-fzu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="a4S-VQ-23p"/>
                             <constraint firstItem="PP3-vf-nuJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fyS-Da-Zca"/>
+                            <constraint firstItem="mzT-cB-fzu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kwR-47-F7m"/>
+                            <constraint firstItem="mzT-cB-fzu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="m4Y-lA-Ocu"/>
+                            <constraint firstItem="mzT-cB-fzu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="o6v-Ih-0su"/>
                             <constraint firstItem="PP3-vf-nuJ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="zNs-oG-U5O"/>
                         </constraints>
                     </view>
@@ -75,6 +96,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emptyView" destination="PP3-vf-nuJ" id="OtP-Td-Q4G"/>
+                        <outlet property="errorLabel" destination="ale-BV-da6" id="OgH-2x-P6T"/>
+                        <outlet property="errorView" destination="mzT-cB-fzu" id="1aX-tq-hlC"/>
                         <outlet property="refreshItem" destination="QGD-9Z-fit" id="pbn-PG-wrU"/>
                         <outlet property="resultView" destination="6Ie-QZ-j7j" id="xZd-Pz-Hd8"/>
                     </connections>

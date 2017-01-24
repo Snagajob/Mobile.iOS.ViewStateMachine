@@ -10,10 +10,16 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+enum DemoError: Error {
+    case something
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var resultView: UIView!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet var errorView: UIView!
+    @IBOutlet var errorLabel: UILabel!
     @IBOutlet var refreshItem: UIBarButtonItem!
     
     let backgroundColors: [UIColor] = [.blue, .orange, .red, .green]
@@ -26,14 +32,16 @@ class ViewController: UIViewController {
         
         self.refreshItem
             .rx.tap
-            .scan(false) { previousValue,_ in
-                return !previousValue
+            .scan(0) { previousValue,_ in
+                return previousValue + 1
             }
-            .map { bool -> ViewState<UIColor> in
-                if(bool){
+            .map { int -> ViewState<UIColor> in
+                if int % 10 == 0 {
+                    return .error(DemoError.something)
+                } else if int % 2 == 0 {
                     let rand = arc4random_uniform(UInt32(self.backgroundColors.count))
                     return .result(self.backgroundColors[Int(rand)])
-                }else {
+                } else {
                     return .empty
                 }
             }
@@ -64,6 +72,11 @@ extension ViewController: ViewStateTransitionable {
             case .empty:
                 UIView.transition(with: self.emptyView, duration: 0.2, options: [], animations: {
                     self.view.bringSubview(toFront: self.emptyView)
+                }, completion: nil)
+            case .error:
+                UIView.transition(with: self.errorView, duration: 0.2, options: [], animations: {
+                    self.errorLabel.text = "An error occurred"
+                    self.view.bringSubview(toFront: self.errorView)
                 }, completion: nil)
             default: return
             }
